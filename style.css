@@ -1,0 +1,658 @@
+/* Global Styles */
+:root {
+    --primary-color: #FF67C4; /* Pink/Purple */
+    --secondary-color: #FFDE59; /* Yellow */
+    --dark-color: #333;
+    --light-color: #f4f4f4;
+    --white: #fff;
+    --gradient-bg: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--white);
+    font-size: 16px; /* Base font size for desktop */
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease; /* Added transition for links */
+}
+
+a:hover {
+    color: var(--dark-color); /* Hover color for general links */
+}
+
+
+ul {
+    list-style: none;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: var(--dark-color);
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: background 0.3s ease, color 0.3s ease;
+     border: none;
+     cursor: pointer;
+     font-size: 1em;
+}
+
+.btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+section {
+    padding: 60px 0; /* Default padding for sections */
+    text-align: center;
+}
+
+section h2 {
+    margin-bottom: 20px;
+    font-size: 2.2em;
+    color: var(--dark-color);
+}
+
+/* Header */
+header {
+    background-color: rgba(255, 255, 255, 0.52); /* 52% transparent white */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari compatibility */
+    color: var(--dark-color);
+    padding: 15px 0;
+    border-bottom: 3px solid var(--secondary-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure header stays on top */
+    transition: background-color 0.3s ease; /* Smooth transition for background */
+}
+
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+header .logo img {
+    max-height: 50px; /* Adjust logo size */
+    width: auto;
+    display: block;
+    border-radius: 8px; /* Add corner radius to the logo image */
+}
+
+/* Desktop Navigation (Default) */
+header .main-nav ul { /* Target using the new class */
+    display: flex; /* Show as row on desktop */
+}
+
+header .main-nav ul li {
+    margin-left: 20px;
+}
+
+header .main-nav a {
+    color: var(--dark-color);
+    font-weight: bold;
+    padding-bottom: 3px;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+     font-size: 1em;
+}
+
+header .main-nav a:hover {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+/* Hamburger Menu Toggle (Hidden on Desktop) */
+.menu-toggle {
+    display: none; /* Hide by default on desktop */
+    font-size: 1.8em;
+    cursor: pointer;
+    color: var(--dark-color);
+    transition: color 0.3s ease;
+    z-index: 1001; /* Ensure toggle is above the mobile nav */
+}
+
+.menu-toggle:hover {
+    color: var(--primary-color);
+}
+
+/* Hide the close icon by default */
+.menu-toggle .fa-times {
+    display: none;
+}
+
+
+/* Hero Section */
+#hero {
+    background: var(--gradient-bg);
+    color: var(--white);
+    padding: 100px 0;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#hero h2 {
+    font-family: 'Satisfy', cursive; /* Apply Satisfy font */
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: var(--white);
+     text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Optional: Add text shadow for readability */
+}
+
+#hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+#hero .btn {
+    background: var(--white);
+    color: var(--dark-color);
+}
+
+#hero .btn:hover {
+    background: var(--dark-color);
+    color: var(--white);
+}
+
+
+/* About Section */
+#about {
+    background-color: var(--light-color);
+}
+
+#about h2 span {
+    font-family: 'Satisfy', cursive; /* Apply Satisfy font to the span */
+    /* Optional: Adjust color if needed */
+    /* color: var(--primary-color); */
+}
+
+#about p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Services Section */
+#services {
+    padding-bottom: 90px; /* Added extra space below service items */
+}
+
+#services .service-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.service-item {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Increased shadow slightly for visibility */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* More prominent shadow on hover */
+}
+
+.service-item i {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.service-item h3 {
+    margin-bottom: 10px;
+    color: var(--dark-color);
+     font-size: 1.4em;
+}
+
+.service-item p {
+    color: #555;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+
+
+/* Pricing Section */
+#pricing .pricing-category {
+    margin-bottom: 50px;
+    background: var(--light-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+#pricing .pricing-category h3 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.6em;
+    color: var(--dark-color);
+}
+
+#pricing .pricing-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+#pricing .pricing-category li {
+    margin-bottom: 10px;
+    font-size: 1em;
+    padding-left: 20px;
+    position: relative;
+}
+
+#pricing .pricing-category li:before {
+    content: '•';
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Website Plans Specific Styling */
+#pricing .website-plans .plan-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.plan-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    border-top: 5px solid var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transition */
+}
+.plan-card:hover {
+     transform: translateY(-5px); /* Slight lift on hover */
+     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+.plan-card h4 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.plan-card .price {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+}
+
+.plan-card ul {
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.plan-card ul li {
+     margin-bottom: 10px;
+    font-size: 1em;
+     padding-left: 25px;
+     position: relative;
+}
+
+.plan-card ul li i.fa-check-circle {
+     position: absolute;
+    left: 0;
+    top: 2px;
+    color: green;
+    font-size: 0.9em;
+}
+
+.plan-card ul li:before {
+    content: none;
+}
+
+
+.plan-card .highlight {
+    font-weight: bold;
+    color: green;
+    margin-top: 15px;
+    text-align: center;
+     font-size: 1.1em;
+}
+
+
+.necessities {
+    background: #e9e9e9;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.necessities h4 {
+     font-size: 1.3em;
+     margin-bottom: 15px;
+     color: var(--dark-color);
+     text-align: center;
+}
+
+.necessities ul li {
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+.necessities ul li:before {
+    content: '🔹';
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1.5em;
+    margin-left: -1.5em;
+}
+
+.necessities small {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    color: #555;
+    font-size: 0.9em;
+}
+
+
+/* Contact Section */
+#contact {
+    background: var(--gradient-bg);
+    color: var(--white);
+}
+
+#contact h2, #contact p {
+     color: var(--white);
+}
+
+#contact form {
+    max-width: 600px;
+    margin: 30px auto;
+    text-align: left;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#contact .form-group {
+    margin-bottom: 20px;
+}
+
+#contact label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--dark-color);
+     font-size: 1em;
+}
+
+#contact input,
+#contact textarea,
+#contact select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+     box-sizing: border-box;
+}
+
+#contact textarea {
+    resize: vertical;
+}
+
+#contact .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.contact-info {
+     margin-top: 20px;
+     font-size: 1em;
+     color: var(--white);
+}
+
+.contact-info a {
+     color: var(--secondary-color);
+     font-weight: bold;
+}
+.contact-info a:hover {
+     color: var(--white);
+     text-decoration: underline;
+}
+
+
+/* Footer */
+footer {
+    background: var(--dark-color);
+    color: var(--white);
+    padding: 30px 0;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5em;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px; /* Slightly smaller base font size on mobile */
+    }
+
+    header .container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header .logo img {
+        max-height: 40px; /* Smaller logo on mobile */
+    }
+
+    /* Show hamburger menu toggle on mobile */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Mobile Navigation */
+    header .main-nav { /* Target using the new class */
+        position: absolute;
+        top: 100%; /* Position right below the header */
+        left: 0;
+        width: 100%;
+        background: var(--white); /* White background for the menu */
+        border-bottom: 3px solid var(--primary-color);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        overflow: hidden;
+        /* Hide navigation by default */
+        max-height: 0; /* Start collapsed */
+        opacity: 0; /* Start transparent */
+        visibility: hidden; /* Hide from screen readers and clicks when closed */
+        transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+         z-index: 999; /* Below toggle, above content */
+    }
+
+    /* When header has 'active' class, show navigation */
+    header.active .main-nav { /* Target using the new class */
+        max-height: 500px; /* Needs to be larger than content height - adjust if menu is taller */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    header .main-nav ul { /* Target using the new class */
+        flex-direction: column;
+        padding: 20px 0;
+        align-items: stretch;
+    }
+
+    header .main-nav ul li { /* Target using the new class */
+        margin: 0;
+        border-bottom: 1px solid var(--light-color);
+    }
+
+    header .main-nav ul li:last-child { /* Target using the new class */
+         border-bottom: none;
+    }
+
+    header .main-nav a { /* Target using the new class */
+        display: block;
+        padding: 15px 20px;
+        text-align: center;
+        color: var(--dark-color);
+        border-bottom: none;
+    }
+
+    header .main-nav a:hover { /* Target using the new class */
+        background: var(--light-color);
+        color: var(--primary-color);
+         border-bottom: none;
+    }
+
+     /* Toggle between hamburger and close icon using display */
+    header.active .menu-toggle .fa-bars {
+         display: none;
+    }
+     header.active .menu-toggle .fa-times {
+         display: inline-block; /* Show times icon */
+     }
+     /* Initial state: hide times, show bars */
+     .menu-toggle .fa-times {
+         display: none;
+     }
+      .menu-toggle .fa-bars {
+         display: inline-block;
+     }
+
+
+    #hero h2 {
+        font-size: 2.2em;
+    }
+     #hero p {
+         font-size: 1.1em;
+     }
+
+    section {
+        padding: 40px 0;
+    }
+
+    section h2 {
+        font-size: 2em;
+    }
+
+     #services { /* Adjust padding bottom for mobile */
+         padding-bottom: 60px;
+     }
+
+    .service-item, .plan-card, .pricing-category {
+         padding: 20px;
+    }
+
+    .service-item h3 {
+         font-size: 1.3em;
+    }
+     .service-item p {
+         font-size: 0.95em;
+     }
+
+
+    #pricing .pricing-category h3 {
+        font-size: 1.5em;
+    }
+    #pricing .pricing-category li {
+         font-size: 0.95em;
+    }
+
+
+    #pricing .website-plans .plan-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-card h4 {
+         font-size: 1.3em;
+    }
+
+    .plan-card .price {
+         font-size: 1.4em;
+    }
+     .plan-card ul li {
+         font-size: 0.95em;
+     }
+
+
+     .necessities {
+         padding: 20px;
+     }
+
+     .necessities h4 {
+         font-size: 1.2em;
+     }
+     .necessities ul li {
+         font-size: 0.95em;
+     }
+
+    #contact form {
+        padding: 15px;
+    }
+
+    #contact label, #contact input, #contact textarea, #contact select, #contact .btn {
+        font-size: 1em;
+    }
+     .contact-info {
+         font-size: 0.95em;
+     }
+}
