@@ -2,7 +2,7 @@
 :root {
     --primary-color: #FF67C4; /* Pink/Purple */
     --secondary-color: #FFDE59; /* Yellow */
-    --dark-color: #333;
+    --dark-color: #0e3174;
     --light-color: #f4f4f4;
     --white: #fff;
     --gradient-bg: linear-gradient(to right, var(--primary-color), var(--secondary-color));
