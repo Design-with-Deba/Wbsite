@@ -1,81 +1,141 @@
-// Add modern functionality to the website
-
-// Helper function for smooth scrolling
-function smoothScroll(target) {
-    const element = document.querySelector(target);
-    if (!element) return;
+// Document Ready Function
+document.addEventListener('DOMContentLoaded', function() {
+    // Set Current Year in Footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
     
-    window.scrollTo({
-        top: element.offsetTop - 80, // Account for fixed header
-        behavior: 'smooth'
-    });
-}
-
-// Handle navigation links clicks
-document.querySelectorAll('header a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Close mobile menu if open
-        if (document.querySelector('header').classList.contains('active')) {
-            document.querySelector('header').classList.remove('active');
-        }
-        
-        smoothScroll(this.getAttribute('href'));
-    });
-});
-
-// Mobile menu toggle
-const menuToggle = document.querySelector('.menu-toggle');
-const header = document.querySelector('header');
-
-menuToggle.addEventListener('click', () => {
-    header.classList.toggle('active');
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const header = document.querySelector('header');
     
-    // Prevent body scroll when menu is open
-    if (header.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = '';
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            header.classList.toggle('active');
+            // Prevent scrolling when menu is open
+            document.body.classList.toggle('no-scroll', header.classList.contains('active'));
+        });
     }
-});
-
-// Header scroll effect
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
-// Add animations to elements when they come into view
-const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.service-item, .pricing-category, .plan-card, #about p, #contact form');
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('slide-up');
-                observer.unobserve(entry.target);
+    // Close mobile menu when clicking on a nav link
+    const navLinks = document.querySelectorAll('.main-nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (header.classList.contains('active')) {
+                header.classList.remove('active');
+                document.body.classList.remove('no-scroll');
             }
         });
-    }, {
-        threshold: 0.1
     });
     
-    elements.forEach(el => {
-        observer.observe(el);
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     });
-};
-
-// Set current year in footer
-document.getElementById('current-year').innerText = new Date().getFullYear();
-
-// Initialize animations when the page is loaded
-window.addEventListener('load', () => {
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            
+            // Skip if it's just "#"
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // Calculate header height for offset
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = targetPosition - headerHeight;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Add animation classes to elements when they come into view
+    const animateOnScroll = function() {
+        const elements = document.querySelectorAll('.service-item, .pricing-category, .plan-card');
+        
+        elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementPosition < windowHeight - 100) {
+                element.classList.add('fade-in');
+            }
+        });
+    };
+    
+    // Run once on load
     animateOnScroll();
     
-    // Add fade-in class to hero section
-    document.querySelector('#hero .container').classList.add('fade-in');
+    // Run on scroll
+    window.addEventListener('scroll', animateOnScroll);
+    
+    // Form validation and submission handling
+    const contactForm = document.querySelector('#contact form');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            // Basic form validation (can be expanded)
+            const nameField = document.getElementById('name');
+            const emailField = document.getElementById('email');
+            const messageField = document.getElementById('message');
+            
+            let isValid = true;
+            
+            // Very basic validation
+            if (!nameField.value.trim()) {
+                highlightField(nameField, true);
+                isValid = false;
+            } else {
+                highlightField(nameField, false);
+            }
+            
+            if (!emailField.value.trim() || !isValidEmail(emailField.value)) {
+                highlightField(emailField, true);
+                isValid = false;
+            } else {
+                highlightField(emailField, false);
+            }
+            
+            if (!messageField.value.trim()) {
+                highlightField(messageField, true);
+                isValid = false;
+            } else {
+                highlightField(messageField, false);
+            }
+            
+            if (!isValid) {
+                e.preventDefault();
+                alert('Please fill in all required fields correctly.');
+            }
+            
+            // If using Formspree or similar service, form submission continues normally
+        });
+    }
+    
+    // Helper function for form validation
+    function highlightField(field, isError) {
+        if (isError) {
+            field.style.borderColor = '#ff3860';
+        } else {
+            field.style.borderColor = '#ddd';
+        }
+    }
+    
+    // Helper function to validate email format
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
 });
