@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Add animation classes to elements when they come into view
+    /*// Add animation classes to elements when they come into view
     const animateOnScroll = function() {
         const elements = document.querySelectorAll('.service-item, .pricing-category, .plan-card');
         
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     };
-    
+    */
     // Run once on load
     animateOnScroll();
     
