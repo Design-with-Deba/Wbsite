@@ -381,7 +381,7 @@ header .main-nav a:hover::after {
     padding: 40px;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
-    text-align: left;
+    text-align: center;
 }
 
 #pricing .pricing-category:hover {
@@ -920,6 +920,10 @@ footer p {
 
     .service-item h3 {
         font-size: 1.4em;
+    }
+    
+    #pricing .pricing-category {
+        text-align:left;
     }
 
     .plan-card h4 {
