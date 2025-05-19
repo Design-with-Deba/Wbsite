@@ -76,10 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     */
     // Run once on load
-    animateOnScroll();
+    // animateOnScroll();
     
     // Run on scroll
-    window.addEventListener('scroll', animateOnScroll);
+    // window.addEventListener('scroll', animateOnScroll);
     
     // Form validation and submission handling
     const contactForm = document.querySelector('#contact form');
