@@ -786,7 +786,7 @@ footer p {
 
     #hero {
         padding: 130px 0 70px;
-        min-height: auto;
+        min-height: 100vh;
     }
 
     #hero h2 {
