@@ -116,18 +116,21 @@ header {
     -webkit-backdrop-filter: blur(10px);
     color: var(--dark-color);
     padding: 15px 0;
-    border-bottom: none;
+    border-bottom: 1px solid rgba(14, 49, 116, 0);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
 }
 
 header.scrolled {
     padding: 10px 0;
     background-color: rgba(255, 255, 255, 0.82);
+    border-bottom: 1px solid rgba(14, 49, 116, 0);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
 }
 
 header .container {
